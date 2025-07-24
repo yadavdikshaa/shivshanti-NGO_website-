@@ -45,13 +45,13 @@ A dynamic and user-friendly web application for ShivShanti NGO, designed to show
 ### 🔹 Donation System (💳 Razorpay Integrated)
 Secure Razorpay donation gateway
 Donation form includes:
-Full Name
-Email Address
-Donation Amount
-Payment handled through Razorpay Checkout
-Stores donation data in MongoDB
-Validation and success/failure feedback
-"Back to Home" navigation after payment
+- Full Name
+- Email Address
+- Donation Amount
+- Payment handled through Razorpay Checkout
+- Stores donation data in MongoDB
+- Validation and success/failure feedback
+- "Back to Home" navigation after payment
 
 
 ## 🛠️ Tech Stack
