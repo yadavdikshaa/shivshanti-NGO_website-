@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Make a Donation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+  <!-- Navbar -->
+  <header>
+    <%- include('partials/navbar') %>
+  </header>
+
+  <!-- Donation Section -->
+  <section class="max-w-xl mx-auto mt-16 px-6 py-10 bg-white shadow-lg rounded-lg">
+    <h1 class="text-3xl font-bold text-[#FF5900] mb-6 text-center">Make a Donation</h1>
+
+    <form id="donationForm" class="space-y-5">
+      <div>
+        <label for="name" class="block font-semibold mb-1">Name:</label>
+        <input type="text" id="name" name="name" required
+          class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+      </div>
+
+      <div>
+        <label for="email" class="block font-semibold mb-1">Email:</label>
+        <input type="email" id="email" name="email" required
+          class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+      </div>
+
+      <div>
+        <label for="amount" class="block font-semibold mb-1">Amount (₹):</label>
+        <input type="number" id="amount" name="amount" min="1" required
+          class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+      </div>
+
+      <button type="submit"
+        class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-md transition duration-300">
+        Donate Now
+      </button>
+    </form>
+  </section>
+
+  <!-- Razorpay Script -->
+  <script>
+    document.getElementById('donationForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const amount = document.getElementById('amount').value;
+
+      const response = await fetch('/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, amount })
+      });
+
+      const orderData = await response.json();
+      if (!orderData.id) {
+        alert('Error creating order: ' + (orderData.error || 'Unknown error'));
+        return;
+      }
+
+      const options = {
+        key: orderData.key,
+        amount: orderData.amount,
+        currency: 'INR',
+        name: 'Shivshanti Pratishthan',
+        description: 'Donation',
+        order_id: orderData.id,
+        image: '/images/logo.png',
+        handler: async function (response) {
+          const verifyResponse = await fetch('/verify-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature
+            })
+          });
+
+          const verifyData = await verifyResponse.json();
+          if (verifyData.status === 'success') {
+            window.location.href = `/success/${verifyData.orderId}`;
+          } else {
+            alert('Payment verification failed!');
+          }
+        },
+        prefill: {
+          name: name,
+          email: email
+        },
+        theme: {
+          color: '#4CAF50'
+        }
+      };
+
+      const rzp = new Razorpay(options);
+      rzp.open();
+    });
+  </script>
+</body>
+</html>
