@@ -42,6 +42,17 @@ A dynamic and user-friendly web application for ShivShanti NGO, designed to show
 - Quick Navigation Links
 - Developer credits
 
+### 🔹 Donation System (💳 Razorpay Integrated)
+Secure Razorpay donation gateway
+Donation form includes:
+Full Name
+Email Address
+Donation Amount
+Payment handled through Razorpay Checkout
+Stores donation data in MongoDB
+Validation and success/failure feedback
+"Back to Home" navigation after payment
+
 
 ## 🛠️ Tech Stack
 
@@ -88,6 +99,25 @@ A dynamic and user-friendly web application for ShivShanti NGO, designed to show
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3febeb2c-ffd7-4f29-ba81-199af02f1c3e" />
 
 ##CONTACT
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7bd95201-1823-4f77-8160-7dc862116951" />
+
+##GALLERY
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4180a479-c57b-43b2-b675-757ab05ec15a" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3fedefe8-3458-44f2-94b5-2bdf3044936e" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5a6b9a63-9147-4082-8a28-4e04934ee1fa" />
+
+##DONATION PAGE
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ff33c506-61e2-42bd-a139-e9b13f45d304" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3b567cfe-af72-4605-97e9-8e16135ef7a2" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/578602e1-51d3-4db1-b7af-a79ec019df6d" />
+
+
+
+
+
+
+
+
 
 
 
