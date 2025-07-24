@@ -1,5 +1,7 @@
-<img width="1919" height="687" alt="image" src="https://github.com/user-attachments/assets/87394fd0-8688-4081-84fd-396fea408a4e" /><img width="1919" height="687" alt="image" src="https://github.com/user-attachments/assets/2d315033-09b0-456c-9fdc-c8df58faa94a" /># ShivShanti NGO Website 🌱
+# ShivShanti NGO Website 🌱
+
 A dynamic and user-friendly web application for ShivShanti NGO, designed to showcase their impactful work, accept enquiries, and engage with visitors effectively.
+
 ## 🚀 Features
 ### 🔹 Home Page
 - Hero section with an impactful introduction
